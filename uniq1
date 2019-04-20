@@ -1,0 +1,22 @@
+# my version of "uniq", an unix program 
+# version without function
+
+import fileinput
+
+# make an input list
+input_list = []
+for line in fileinput.input():
+    input_list.append(line)
+
+# make an output list
+output_list = []
+j = 0
+for line in input_list:
+    check = input_list[j]           # present line to check
+    if check != input_list[j - 1]:  # if lines are different add to output list
+        output_list.append(check)
+    j += 1
+
+# print output
+for line in output_list:
+    print(line, end='')
