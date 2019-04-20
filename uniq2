@@ -1,0 +1,33 @@
+# my version of "uniq", an unix program
+# version with function
+
+import fileinput
+
+
+def check(previous_line, present_line):
+    if previous_line != present_line:
+        return present_line
+    else:
+        return None
+
+
+# make an input list
+input_list = []
+for line in fileinput.input():
+    input_list.append(line)
+
+
+# check if 1. line is other than 2. line
+output_list = []
+j = 0
+for line in input_list:
+    checked_line = check(input_list[j - 1], input_list[j])
+    # if lines are different add to output list
+    if bool(checked_line):
+        output_list.append(checked_line)
+    j += 1
+
+
+# print output
+for line in output_list:
+    print(line, end='')
